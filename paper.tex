@@ -16,9 +16,9 @@
 
 \begin{document}
 %
-\title{Visual Analytics of Large Networks assisted by Multilevel Strategies\thanks{Supported by FAPESP, project 2017/05838-3}}
+\title{Visual Analytics of Large Bipartite Networks assisted by Multilevel Strategies\thanks{Supported by FAPESP, project 2017/05838-3}}
 %
-%\titlerunning{Abbreviated paper title}
+\titlerunning{Multilevel Visualization of Bipartite Networks}
 % If the paper title is too long for the running head, you can set
 % an abbreviated paper title here
 %
@@ -36,11 +36,29 @@ Maria Cristina Ferreira de Oliveira\orcidID{0000-0002-4729-5104}}
 \email{cristina@icmc.usp.br}\\
 \url{http://conteudo.icmc.usp.br/pessoas/cristina/}}
 %
-\maketitle              % typeset the header of the contribution
+\maketitle
 %
 \begin{abstract}
 % The abstract should briefly summarize the contents of the paper in
 % 150--250 words.
+  It is a well established fact that bipartite networks are often used to
+  model real-world phenomena and that it plays fundamental roles in
+  graph theory.
+  Multilevel strategies have been developed for optimization tasks, and for the visualization of simple (``unipartite'') networks, but not for bipartite networks.
+  In this work, we present advances in the use of multilevel strategies for the
+  visualization of bipartite networks, allowing interactive and intuitive navigation of such structures and visual mappings of large datasets.
+  More specifically, we developed a visual analytics web interface in which
+  bipartite networks are presented to the user, by a parametrizable simpification
+  of the original structures, through the application of coarsening algorithms.
+  The resulting networks are then presented to the user,
+  providing a genuine route for the ``overview first - focus on demand''
+  process on the analysis of the undelying data, in which the analyst
+  selects supervertices or whole network sectors for more detailed observation,
+  i.e. performs requests for the interface to display 
+  specific structures in less simplified settings.
+  Moreover, the application is useful for the development multilevel strategies
+  e.g. by the specification of vertices to guide the coarsening processes and
+  the examination of resulting multilevel hierarchy.
 
 \keywords{Network visualization \and Multilevel strategies \and Visual analytics \and Big data \and Complex networks \and Data visualization.}
 \end{abstract}
@@ -49,8 +67,24 @@ Maria Cristina Ferreira de Oliveira\orcidID{0000-0002-4729-5104}}
 %
 \section{Introduction}
 \subsection{Related work}
-\subsection{Nomenclature remarks}
-\section{A description of the method}\label{sec:des}
+%%%
+% artigos que devemos citar pelo histórico científico
+% da estratégia ML, da visualização ML
+% e os que devemos citar pelo ML em redes bipartidas
+% e desenvolvidos no ICMC
+
+\subsection{Nomenclature and conceptual remarks}
+%%%
+% level vs layer
+% simple and heterogeneous graphs
+% multiplex, ?
+% multilevel strategies for optimization
+% supernode metanode, 
+
+\section{Method description}\label{sec:des}
+%%%
+% mlpb and other methods developed
+% arguments for the preferred method (mlpb?)
 \begin{figure}[!h]\centering
 % \includegraphics[width=.7\textwidth]{}
   \caption{.
@@ -59,14 +93,23 @@ Maria Cristina Ferreira de Oliveira\orcidID{0000-0002-4729-5104}}
 
 \noindent 
 \section{Software implementation}\label{sec:imp}
-\section{Conclusions and further work}\label{sec:con}
+%%%
+% description of the functionalities/tools implemented,
+% of the technologies and libraries used
+% optimization of the computational capacity for large networks by
+% means of Web GL, triangles for nodes and details on demand
 
-%
-% ---- Bibliography ----
-%
-% BibTeX users should specify bibliography style 'splncs04'.
-% References will then be sorted and formatted in the correct style.
-%
+\section{Results and discussion}
+%%%
+% consistent use of overview first, details on demand
+% a first contribution on ML vis. of bipartite networks
+% simple interactivity strategies
+
+\section{Conclusions and further work}\label{sec:con}
+%%%
+% extension to multipartite (or heterogeneous) networks.
+% use for marking nodes as pivots for coarsening
+
 \bibliographystyle{splncs04}
 \bibliography{biblio}
 %
