@@ -41,15 +41,18 @@ Maria Cristina Ferreira de Oliveira\orcidID{0000-0002-4729-5104}}
 \begin{abstract}
 % The abstract should briefly summarize the contents of the paper in
 % 150--250 words.
-  It is a well established fact that bipartite networks are often used to
-  model real-world phenomena and that it plays fundamental roles in
+  It is a well established fact that bipartite, or two-layer, networks are pervasive
+  in model real-world phenomena and that they play fundamental roles in
   graph theory.
-  Multilevel strategies have been developed for optimization tasks, and for the visualization of simple (``unipartite'') networks, but not for bipartite networks.
+  Multilevel strategies have been developed for optimization tasks,
+  and for the visualization of simple (``unipartite'') networks,
+  but their employment for visualizing bipartite networks were not found by the authors.
   In this work, we present advances in the use of multilevel strategies for the
-  visualization of bipartite networks, allowing interactive and intuitive navigation of such structures and visual mappings of large datasets.
+  visualization of bipartite networks,
+  allowing interactive and intuitive navigation of such structures and visual mappings of large datasets.
   More specifically, we developed a visual analytics web interface in which
-  bipartite networks are presented to the user, by a parametrizable simpification
-  of the original structures, through the application of coarsening algorithms.
+  a parametrizable simpification of
+  bipartite networks are obtained through the application of coarsening algorithms.
   The resulting networks are then presented to the user,
   providing a genuine route for the ``overview first - focus on demand''
   process on the analysis of the undelying data, in which the analyst
@@ -58,22 +61,59 @@ Maria Cristina Ferreira de Oliveira\orcidID{0000-0002-4729-5104}}
   specific structures in less simplified settings.
   Moreover, the application is useful for the development multilevel strategies
   e.g. by the specification of vertices to guide the coarsening processes and
-  the examination of resulting multilevel hierarchy.
+  the examination of the resulting multilevel hierarchy.
 
 \keywords{Network visualization \and Multilevel strategies \and Visual analytics \and Big data \and Complex networks \and Data visualization.}
 \end{abstract}
 %
-%
-%
 \section{Introduction}
-\subsection{Related work}
+The visualization of large-scale networks poses challenges both in terms of computational costs
+and of effective presentation of the information for the user~\cite{tang,staudt}.
+These issues may be aggravated in the case of bipartite networks,
+due to their sparsity and topological complexities~\cite{alan1}.
+Bipartite networks are comprised of two partitions of nodes,
+called ``layers'',
+and links are not incident between nodes in the same partition.
+Such network type arises very often and naturally from the representation
+of relations among two kinds objects,
+e.g. documents and terms or authors~\cite{doc,sci,movie}, or patient and gene~\cite{gene}.
+Furthermore, real-world networks are often bipartite, and most unipartite networks
+are projections of bipartite networks or may be considered as exibiting bipartite properties~\cite{guillaume0,guillaume}.
+In order to assist the visualization and navigation of large networks, one possibility is the use of
+multilevel strategies, which consist on the employment of incremental coarsening of the original
+network to obtain a sequence of simplified representations.
+Multilevel strategies are most traditionally used for executing complex algorithms
+on large-scale networks by the application of the algorithm on a smaller
+version of the network~\cite{alan2,ml2}.
+Their employment of multilevel strategies for the visualization of simple (i.e. ``unipartite'')
+networks have been reported, but their exploitation for visualizing bipartite networks
+was not found by the authors.
+Accordingly, we present a system for the visualization of bipartite networks using
+multilevel strategies developed for bipartite networks.
+The system consists on presented a simplified version of the network for the user, which then
+requests for supervertices (or collections of them) to be uncoarsened and presented in more detail.
+
+This paper is organized as follows: in Section~\ref{rel} the related work is examined, while in~\ref{nom} are selected remarks about the vocabulary.
+Fundamental concepts are introduced in Section~\ref{bac}, and the method is delineated in Section~\ref{des}.
+The software implementation is then described in Section~\ref{sof}.
+Results and discussion are in~\ref{res}.
+Finally, Section~\ref{con} holds concluding and further work statements.
+
+\subsection{Related work}\label{rel}
 %%%
 % artigos que devemos citar pelo histórico científico
 % da estratégia ML, da visualização ML
 % e os que devemos citar pelo ML em redes bipartidas
 % e desenvolvidos no ICMC
+Multilevel strategies have been employed to visualize unipartite networks~\cite{u1,u2,u3,u4,u5,u6,u7}.
+Also, the aggregation of clusters have been reported, and comprises an approach that resembles
+the coarsening procedure in creating simplified representations of the original network~\cite{a1,a2,a3,a4,a5,a6}.
+Even so, the authors are not aware of previous reports on the use of multilevel strategies
+for the visualization and navigation of bipartite networks.
 
-\subsection{Nomenclature and conceptual remarks}
+
+
+\subsection{Nomenclature and conceptual remarks}\label{nom}
 %%%
 % level vs layer
 % simple and heterogeneous graphs
@@ -81,7 +121,8 @@ Maria Cristina Ferreira de Oliveira\orcidID{0000-0002-4729-5104}}
 % multilevel strategies for optimization
 % supernode metanode, 
 
-\section{Method description}\label{sec:des}
+\section{Backgroud}\label{bac}
+\section{Method description}\label{des}
 %%%
 % mlpb and other methods developed
 % arguments for the preferred method (mlpb?)
@@ -92,20 +133,20 @@ Maria Cristina Ferreira de Oliveira\orcidID{0000-0002-4729-5104}}
 \end{figure}
 
 \noindent 
-\section{Software implementation}\label{sec:imp}
+\section{Software implementation}\label{sof}
 %%%
 % description of the functionalities/tools implemented,
 % of the technologies and libraries used
 % optimization of the computational capacity for large networks by
 % means of Web GL, triangles for nodes and details on demand
 
-\section{Results and discussion}
+\section{Results and discussion}\label{res}
 %%%
 % consistent use of overview first, details on demand
 % a first contribution on ML vis. of bipartite networks
 % simple interactivity strategies
 
-\section{Conclusions and further work}\label{sec:con}
+\section{Conclusions and further work}\label{con}
 %%%
 % extension to multipartite (or heterogeneous) networks.
 % use for marking nodes as pivots for coarsening
