@@ -51,11 +51,11 @@ Maria Cristina Ferreira de Oliveira\orcidID{0000-0002-4729-5104}}
   visualization of bipartite networks,
   allowing interactive and intuitive navigation of such structures and visual mappings of large datasets.
   More specifically, we developed a visual analytics web interface in which
-  a parametrizable simpification of
+  a parametrizable simplification of
   bipartite networks are obtained through the application of coarsening algorithms.
   The resulting networks are then presented to the user,
   providing a genuine route for the ``overview first - focus on demand''
-  process on the analysis of the undelying data, in which the analyst
+  process on the analysis of the underlying data, in which the analyst
   selects supervertices or whole network sectors for more detailed observation,
   i.e. performs requests for the interface to display 
   specific structures in less simplified settings.
@@ -78,7 +78,7 @@ Such network type arises very often and naturally from the representation
 of relations among two kinds objects,
 e.g. documents and terms or authors~\cite{doc,sci,movie}, or patient and gene~\cite{gene}.
 Furthermore, real-world networks are often bipartite, and most unipartite networks
-are projections of bipartite networks or may be considered as exibiting bipartite properties~\cite{guillaume0,guillaume}.
+are projections of bipartite networks or may be considered as exhibiting bipartite properties~\cite{guillaume0,guillaume}.
 In order to assist the visualization and navigation of large networks, one possibility is the use of
 multilevel strategies, which consist on the employment of incremental coarsening of the original
 network to obtain a sequence of simplified representations.
@@ -94,8 +94,8 @@ The system consists on presented a simplified version of the network for the use
 requests for supervertices (or collections of them) to be uncoarsened and presented in more detail.
 
 This paper is organized as follows: in Section~\ref{rel} the related work is examined, while in~\ref{nom} are selected remarks about the vocabulary.
-Fundamental concepts are introduced in Section~\ref{bac}, and the method is delineated in Section~\ref{des}.
-The software implementation is then described in Section~\ref{sof}.
+The method is delineated in Section~\ref{des} and
+the software implementation is then described in Section~\ref{sof}.
 Results and discussion are in~\ref{res}.
 Finally, Section~\ref{con} holds concluding and further work statements.
 
@@ -110,22 +110,56 @@ Also, the aggregation of clusters have been reported, and comprises an approach 
 the coarsening procedure in creating simplified representations of the original network~\cite{a1,a2,a3,a4,a5,a6}.
 Even so, the authors are not aware of previous reports on the use of multilevel strategies
 for the visualization and navigation of bipartite networks.
+Furthermore, only~\cite{a1,a2,a3,a4,a6} reports on a system for visual analytics, i.e. the other works do not
+address data analysis by interactive visual interfaces,
+including all multilevel strategies for visualization.
 
-
-
-\subsection{Nomenclature and conceptual remarks}\label{nom}
+\subsection{Nomenclature remarks}\label{nom}
 %%%
 % level vs layer
 % simple and heterogeneous graphs
 % multiplex, ?
 % multilevel strategies for optimization
 % supernode metanode, 
+The main vocabulary issue that arises in the context of this article is between
+level and layer. Layers are the sets of a bipartite network, while levels are the sequence
+of coarsened networks.
+Also, simple or homogeneous networks are opposed to heterogeneous networks, in which there
+are more then one type of node.
+Bipartite networks may be regarded as an elementary case of heterogeneous networks,
+but it has one additional restriction: only nodes of different types are connected.
+Another usual concept in this context is that of a multilayer network, in which there are layers,
+i.e. partitions of nodes, in addition to nodes and links.
+Bipartite networks, in this case, are multilayer networks with only two layers and no intra-layer links, i.e. all the links are inter-layers.
+Most importantly, there are many synonyms which are found in this context, e.g. supernodes are also called metanodes or supervertices.
+A thorough exposition of the vocabulary are beyond the scope of this article, but
+some attention for the issue is helpful to assist searches and newcomers.
 
-\section{Backgroud}\label{bac}
 \section{Method description}\label{des}
 %%%
 % mlpb and other methods developed
 % arguments for the preferred method (mlpb?)
+\subsection{Fundamental concepts}\label{bac}
+A bipartite network $G=(V,E)$ consists in a set $V$ of vertices which is partitioned in two subsets
+with no links between nodes in the same set, i.e. $\exists\; V_1, V_2:\; V_1\cup V_2 = V,\;V_1\cap V_2 = \emptyset$, and $E\subseteq V_1 \times V_2$.
+The variable names are borrowed from more traditional Graph theory, with Vertices (nodes) and Edges (links).
+
+A multilevel strategy consists in obtaining a hierarchy of coarsened networks $G_l$, $l$ integer and $l \in [0,L-1]$ where $G_0$ is the original network.
+The coarsening procedures requires two algorithms, the \emph{matching}, that defines the nodes to be collapsed, and the \emph{contraction}, which builds the reduced representation
+from the matched nodes.
+There are several coarsening algorithms reported in the scientific literature~\cite{}, a few of them
+developed for bipartite networks~\cite{}.
+A discussion of these algorithms is found on the bibliography~\cite{} and is beyond the scope of this article.
+Most importantly, we are interested in the MLPB algorithm, not only because it is suited for bipartite networks, but because it has yielded simplified networks which carries essential topological features of the original networks, and that result is perceived is the visualization as shown in Sections~\ref{des},~\ref{sof} and~\ref{res}.
+
+Visual analytics is the scientific field dedicated to analytical reasoning assisted by interactive visual interfaces~\cite{}.
+Therefore, the area is specially concerned with coupling interactive visual representations with sense and decision making.
+Of special relevance for the present work, the techniques are most often employed to amplify human capabilities in specific ways, which includes reducing the search space, enhancing the recognition of patterns and the infererence of relationships, and providing a manipulable medium for the exploration of the information of interest~\cite{}.
+
+\subsection{The navigation pathway}
+
+
+
 \begin{figure}[!h]\centering
 % \includegraphics[width=.7\textwidth]{}
   \caption{.
