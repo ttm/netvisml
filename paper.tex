@@ -68,7 +68,7 @@ Maria Cristina Ferreira de Oliveira\orcidID{0000-0002-4729-5104}}
 %
 \section{Introduction}
 The visualization of large-scale networks poses challenges both in terms of computational costs
-and of effective presentation of the information for the user~\cite{tang,staudt}.
+and of effective presentation of the information to the user~\cite{tang,staudt}.
 These issues may be aggravated in the case of bipartite networks,
 due to their sparsity and topological complexities~\cite{alan1}.
 Bipartite networks are comprised of two partitions of nodes,
@@ -78,26 +78,27 @@ Such network type arises very often and naturally from the representation
 of relations among two kinds objects,
 e.g. documents and terms or authors~\cite{doc,sci,movie}, or patient and gene~\cite{gene}.
 Furthermore, real-world networks are often bipartite, and most unipartite networks
-are projections of bipartite networks or may be considered as exhibiting bipartite properties~\cite{guillaume0,guillaume}.
+are projections of bipartite networks or exhibit bipartite properties~\cite{guillaume0,guillaume}.
 In order to assist the visualization and navigation of large networks, one possibility is the use of
 multilevel strategies, which consist on the employment of incremental coarsening of the original
 network to obtain a sequence of simplified representations.
 Multilevel strategies are most traditionally used for executing complex algorithms
 on large-scale networks by the application of the algorithm on a smaller
 version of the network~\cite{alan2,ml2}.
-Their employment of multilevel strategies for the visualization of simple (i.e. ``unipartite'')
+The employment of multilevel strategies for the visualization of simple (i.e. ``unipartite'')
 networks have been reported, but their exploitation for visualizing bipartite networks
-was not found by the authors.
+was not found by the authors, as described in the next subsection.
 Accordingly, we present a system for the visualization of bipartite networks using
 multilevel strategies developed for bipartite networks.
-The system consists on presented a simplified version of the network for the user, which then
-requests for supervertices (or collections of them) to be uncoarsened and presented in more detail.
+The system consists on presenting a simplified version of the network to the user, which then
+requests for supervertices (or collections of them) to be uncoarsened and visualized in more detail.
 
-This paper is organized as follows: in Section~\ref{rel} the related work is examined, while in~\ref{nom} are selected remarks about the vocabulary.
+This paper is organized as follows: in Section~\ref{rel} the related work is examined,
+while in~\ref{nom} are selected remarks about the vocabulary.
 The method is delineated in Section~\ref{des} and
 the software implementation is then described in Section~\ref{sof}.
 Results and discussion are in~\ref{res}.
-Finally, Section~\ref{con} holds concluding and further work statements.
+Finally, Section~\ref{con} holds concluions and further work envisioned.
 
 \subsection{Related work}\label{rel}
 %%%
@@ -110,9 +111,8 @@ Also, the aggregation of clusters have been reported, and comprises an approach 
 the coarsening procedure in creating simplified representations of the original network~\cite{a1,a2,a3,a4,a5,a6}.
 Even so, the authors are not aware of previous reports on the use of multilevel strategies
 for the visualization and navigation of bipartite networks.
-Furthermore, only~\cite{a1,a2,a3,a4,a6} reports on a system for visual analytics, i.e. the other works do not
-address data analysis by interactive visual interfaces,
-including all multilevel strategies for visualization.
+Furthermore, only~\cite{a1,a2,a3,a4,a6} reports on a system suitable for visual analytics, i.e. the other works do not
+address data analysis by interactive visual interfaces, including all multilevel strategies for visualization.
 
 \subsection{Nomenclature remarks}\label{nom}
 %%%
@@ -122,7 +122,7 @@ including all multilevel strategies for visualization.
 % multilevel strategies for optimization
 % supernode metanode, 
 The main vocabulary issue that arises in the context of this article is between
-level and layer. Layers are the sets of a bipartite network, while levels are the sequence
+level and layer. Layers are the (two) node partitions of a bipartite network, while levels comprise the sequence
 of coarsened networks.
 Also, simple or homogeneous networks are opposed to heterogeneous networks, in which there
 are more then one type of node.
@@ -132,7 +132,7 @@ Another usual concept in this context is that of a multilayer network, in which 
 i.e. partitions of nodes, in addition to nodes and links.
 Bipartite networks, in this case, are multilayer networks with only two layers and no intra-layer links, i.e. all the links are inter-layers.
 Most importantly, there are many synonyms which are found in this context, e.g. supernodes are also called metanodes or supervertices.
-A thorough exposition of the vocabulary are beyond the scope of this article, but
+A thorough exposition of the vocabulary is beyond the scope of this article, but
 some attention for the issue is helpful to assist searches and newcomers.
 
 \section{Method description}\label{des}
@@ -144,17 +144,22 @@ A bipartite network $G=(V,E)$ consists in a set $V$ of vertices which is partiti
 with no links between nodes in the same set, i.e. $\exists\; V_1, V_2:\; V_1\cup V_2 = V,\;V_1\cap V_2 = \emptyset$, and $E\subseteq V_1 \times V_2$.
 The variable names are borrowed from more traditional Graph theory, with Vertices (nodes) and Edges (links).
 
-A multilevel strategy consists in obtaining a hierarchy of coarsened networks $G_l$, $l$ integer and $l \in [0,L-1]$ where $G_0$ is the original network.
+A multilevel strategy consists in obtaining a hierarchy of coarsened networks $G_l$, $l$ integer and $l \in [0,L-1]$ where $G_0$ is the original network
+and where $|V_i| \leq |V_{i+1}|$.
 The coarsening procedures requires two algorithms, the \emph{matching}, that defines the nodes to be collapsed, and the \emph{contraction}, which builds the reduced representation
 from the matched nodes.
 There are several coarsening algorithms reported in the scientific literature~\cite{}, a few of them
 developed for bipartite networks~\cite{}.
 A discussion of these algorithms is found on the bibliography~\cite{} and is beyond the scope of this article.
-Most importantly, we are interested in the MLPB algorithm, not only because it is suited for bipartite networks, but because it has yielded simplified networks which carries essential topological features of the original networks, and that result is perceived is the visualization as shown in Sections~\ref{des},~\ref{sof} and~\ref{res}.
+Most importantly, we are interested in the MLPB algorithm, not only because it is suited for bipartite networks,
+but because it has yielded simplified networks which carries essential topological features of the original networks,
+and that result is perceived in the visualization as shown in Sections~\ref{des},~\ref{sof} and~\ref{res}.
 
 Visual analytics is the scientific field dedicated to analytical reasoning assisted by interactive visual interfaces~\cite{}.
 Therefore, the area is specially concerned with coupling interactive visual representations with sense and decision making.
-Of special relevance for the present work, the techniques are most often employed to amplify human capabilities in specific ways, which includes reducing the search space, enhancing the recognition of patterns and the inference of relationships, and providing a manipulable medium for the exploration of the information of interest~\cite{}.
+Of special relevance for the present work, the techniques are most often employed to amplify human capabilities in specific ways,
+which includes reducing the search space, enhancing the recognition of patterns and the inference of relationships,
+and providing a manipulable medium for the exploration of the information of interest~\cite{}.
 
 \subsection{The navigation pathway}
 
