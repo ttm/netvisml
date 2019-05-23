@@ -5,6 +5,9 @@
 \documentclass[runningheads]{llncs}
 %
 \usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{algorithmicx}
+\usepackage{algorithm2e}
 \usepackage[utf8]{inputenc}
 \usepackage{subfig}
 % Used for displaying a sample figure. If possible, figure files should
@@ -49,7 +52,7 @@ Maria Cristina Ferreira de Oliveira\orcidID{0000-0002-4729-5104}}
   but their employment for visualizing bipartite networks were not found by the authors.
   In this work, we present advances in the use of multilevel strategies for the
   visualization of bipartite networks,
-  allowing interactive and intuitive navigation of such structures and visual mappings of large datasets.
+  allowing for interactive and intuitive navigation of such structures and visual mappings of large datasets.
   More specifically, we developed a visual analytics web interface in which
   a parametrizable simplification of
   bipartite networks are obtained through the application of coarsening algorithms.
@@ -59,7 +62,7 @@ Maria Cristina Ferreira de Oliveira\orcidID{0000-0002-4729-5104}}
   selects supervertices or whole network sectors for more detailed observation,
   i.e. performs requests for the interface to display 
   specific structures in less simplified settings.
-  Moreover, the application is useful for the development multilevel strategies
+  Moreover, the application is useful for the further development multilevel strategies themselves
   e.g. by the specification of vertices to guide the coarsening processes and
   the examination of the resulting multilevel hierarchy.
 
@@ -142,7 +145,12 @@ some attention for the issue is helpful to assist searches and newcomers.
 \subsection{Fundamental concepts}\label{bac}
 A bipartite network $G=(V,E)$ consists in a set $V$ of vertices which is partitioned in two subsets
 with no links between nodes in the same set, i.e. $\exists\; V_1, V_2:\; V_1\cup V_2 = V,\;V_1\cap V_2 = \emptyset$, and $E\subseteq V_1 \times V_2$.
-The variable names are borrowed from more traditional Graph theory, with Vertices (nodes) and Edges (links).
+The variable names are borrowed from more traditional
+Graph (network) theory, with Vertices (nodes) and Edges (links).
+One may regard the network as $G=(V,E,\sigma,\omega)$,
+$\sigma\,:\,V\rightarrow \mathbb{R}^*$ and with $\omega\,:\,E \rightarrow \mathbb{R}^*$,
+where $\sigma(v)$ is the weight of the node $v$ and
+$\omega(u,v)$ is the weight of the link $(u,v)$.
 
 A multilevel strategy consists in obtaining a hierarchy of coarsened networks $G_l$, $l$ integer and $l \in [0,L-1]$ where $G_0$ is the original network
 and where $|V_i| \leq |V_{i+1}|$.
@@ -150,10 +158,12 @@ The coarsening procedures requires two algorithms, the \emph{matching}, that def
 from the matched nodes.
 There are several coarsening algorithms reported in the scientific literature~\cite{}, a few of them
 developed for bipartite networks~\cite{}.
-A discussion of these algorithms is found on the bibliography~\cite{} and is beyond the scope of this article.
-Most importantly, we are interested in the MLPB algorithm, not only because it is suited for bipartite networks,
-but because it has yielded simplified networks which carries essential topological features of the original networks,
-and that result is perceived in the visualization as shown in Sections~\ref{des},~\ref{sof} and~\ref{res}.
+An exposition about these algorithms is found on the bibliography~\cite{} and is beyond the scope of this article.
+Most importantly, we are interested in coarsening suited for bipartite networks,
+as it has yielded simplified networks which present essential topological features
+of the original networks,
+and such result is perceived in the visualization as hinted in\~cite{alan2} and further shown in
+Sections~\ref{des},~\ref{sof} and~\ref{res}.
 
 Visual analytics is the scientific field dedicated to analytical reasoning assisted by interactive visual interfaces~\cite{}.
 Therefore, the area is specially concerned with coupling interactive visual representations with sense and decision making.
@@ -161,15 +171,152 @@ Of special relevance for the present work, the techniques are most often employe
 which includes reducing the search space, enhancing the recognition of patterns and the inference of relationships,
 and providing a manipulable medium for the exploration of the information of interest~\cite{}.
 
-\subsection{The navigation pathway}
+\subsection{Multilevel coarsening of bipartite networks}\label{bac}
+Before~\cite{alan2}, multilevel approaches were not directly aplicable to bipartite networks.
+Such work introduced novel and efficient matching and coarsening algorithms,
+and scrutinized their validity for solving optimization problems, dimensionality reduction,
+and in the preservation of essential topological features of the original network.
+We here describe the outline of such procedures in the context of our visual analytics contribution.
 
-
+The multilevel optimization is a metaheuristics used to guide,
+modify and potentially fix a solution obtained from a target algorithm.
+It is divided into three phases: coarsening, solution finding and uncoarsening,
+where the solution found in the coarsest network $G_L$ is projected back to the original,
+uncoarsened, network $G_0$.
+Figure~\ref{mlf} illustrates such process.
 
 \begin{figure}[!h]\centering
-% \includegraphics[width=.7\textwidth]{}
-  \caption{.
-  }\label{fig:glob}
+ \includegraphics[width=\textwidth]{mlf}
+  \caption{Phases of the multilevel optimization.
+  A sequence of incrementally reduced networks is obtained in the coarsening phase.
+  An initial solution found at the coarsest network, in the solution finding phase,
+  is projected back to the initial, uncoarsened, network, in the uncoarsening phase.
+  Further details are given in Section~\ref{bac} and specificities related to these
+  phases when applied to visual analytics are in Sections~\ref{net} and~\ref{nav}.
+  }\label{mlf}
 \end{figure}
+
+The coarsening phase results in a sequence of networks $G_l$ from the initial network $G_0$,
+on multiple levels of details.
+The process is carried out by two algorithms: \emph{matching}, which decides which nodes to merge,
+and \emph{contracting}, which achieves the reduced representation from the network and the matching.
+In general, pairs of nodes are selected to be merged into supernodes, and
+most often a matching $M$ consists in a set of non-adjacent links,
+i.e. $\forall\; l_1, l_2 \in M, u \in l_1 \Rightarrow u \notin l_2$.
+The heavy-edge mathing, for example, is a matching that fits this canonical description
+in attempting to maximize total matching weight, but the matching may not satisfy such restrictions.
+Selecting clicks and other larger node sets to be merged into supernodes are possibilites
+under development.
+%%%
+% citar alguem aqui?
+For bipartite network, we use the algorithms provided by~\cite{alan2} in which two restrictions
+are imposed to the matching:
+\begin{itemize}
+  \item A node may only match nodes on the same layer.
+  \item A node may only match nodes that are reachable by two successive links
+    (i.e. the closest possible nodes on the same layer).
+\end{itemize}
+
+The matching is followed by the contraction of the network into a coarser form.
+Typically, the nodes matched are merged into a supernode
+with the weight equal to the sum of the weight of nodes it contains,
+and the links incident to such nodes are joined into superlinks among the supervertices,
+also with total weight equal to the sum of the weight of the links merged.
+The solution finding is usually reasoned about in terms of the computational cost, being much
+alleviated in the reduced network.
+The uncoarsening is usually performed through the complete hierarchy,
+from the coarsest to the original network, with successive refinement of the solutions to
+avoid local minima and improve solution quality.
+These two phases are substantially different when the multilevel strategy is applied to visualization,
+which motivated their separate exposition in the next subsection.
+
+\subsection{Network visualization assisted by multilevel strategies}\label{net}
+In applying the multilevel framework to visualization,
+the target algorithm is the visual mapping of the network,
+i.e. the solution finding phase is the visualization of the network by means of
+the reduced representation.
+The uncoarsening is performed only on demand, through user requests
+to visualize network regions with more detail, thus avoiding unecessary complexity and,
+most importantly, avoiding to overload the visualization with information beyond the
+cognitive convenience of the user and the computational power that the machine being used
+is able to provide for real-time interactivity.
+
+The interactivity is crucial for a number of reasons:
+the definition of the uncoarsening phase desired;
+for the navigation of the network,
+including the access to metadata and changes to the visualization achieved;
+for uncoarsening supernodes;
+and for tunning the achieved visual mapping status, such as by resizing
+and moving nodes.
+The overall procedure is delineated in Algorithm~\ref{alg} and further
+detailed in Sections~\ref{nav} and~\ref{sof}.
+
+
+\SetKwData{Matching}{Matching$_b$}
+\SetKwData{Contracting}{Contracting$_b$}
+\SetKwData{map}{map\_to\_screen}
+\SetKwData{trans}{transform\_visual\_mapping}
+\SetKwInOut{Return}{Return}
+\begin{algorithm}
+  \KwIn{\\
+  \quad bipartite network: $G$\\
+  \quad maximum number of levels: $L \in [0,n] \subset \mathbb{Z}$\\
+  \quad reduction factor: $rf \in (0,0.5] \subset \mathbb{R}$.\\
+  \quad layers to be coarsened: $layers \in {1,2}$\\
+  \quad user command given through the visual interface: $C$
+  }
+  \KwOut{\\
+  \quad Visual mapping of the network: $V$}
+  \BlankLine
+  $i \leftarrow 1$\;
+  \While{$i \le$ layers}{
+    $l\leftarrow 1$\;
+    \While{$l\leq L$}{
+      $M \leftarrow$ \Matching{$G_l$, $i$, $rf$}\;
+      $G_{l+1} \leftarrow$ \Contracting{$G_l$, $M$}\;
+      increment $l$\;
+    }
+      increment $i$\;
+  }
+  $V \leftarrow$ \map{$G_L$}\;
+  \While{1}{
+    $C\leftarrow$ user command\;
+    $V\leftarrow$ \trans{$V$, $C$}\;
+  }
+  \caption{An algorithmic description of the multilevel strategy adapted for the visualization of bipartite networks.
+  The routines {\bf Matching$_b$} and {\bf Contracting$_b$} are any of the matching or contracting
+  algorithms suited for bipartite networks, such as described in~\cite{alan2} which are only ones
+  currently available to the knowledge of the authors.
+  The {\bf map\_to\_screen} routine is performed through the use of a network layout algorithm and
+  then the rendering of the network to the screen.
+  The visual mapping may then be transformed by the user by requesting uncoarsening of specific supernodes,
+  or by other commands not specific to the multilevel strategy, such as requesting metadata exposition, changes to the position of nodes, the color or transparency of nodes and links, zoom and pan,
+  or any other operation defined in Section~\ref{sof}.}\label{alg}
+\end{algorithm}
+
+\subsection{The navigation pathway}\label{nav}
+The abundance of information within large networks makes pertinent the
+application of
+the ``visual information-seeking mantra'', also known as Shneiderman's mantra:
+\emph{overview first, zoom and filter, then details-on-demand}.
+This mantra comprises a number of visual design guidelines,
+such as the details-on-demand technique, and provides
+a very acknowledged framework for designing information visualization applications.
+Accordingly, our idealized exploration pathway starts with an overview,
+achieved by the mapping the coarsest representation of the network through
+standard network layout algorithms for node-link diagrams.
+The user may then zoom into specific regions of the network, and then request
+details by a number of operations, most importantly:
+\begin{itemize}
+  \item reposition nodes, exposing linking patterns.
+  \item request metadata, such as number of children, the parent in a subsequent level, or the number of neighbors.
+  \item request visual mapping of network features, such as node size related to number of neighbors or the number of child nodes it represents.
+  \item request the uncoarsening of specific supernodes or any arbitrary group of supernodes.
+\end{itemize}
+
+Other operations are convenient to make the visual mapping adequate for the diverse settings possible:
+network size, open supervertices, levels exposed, and topological features such as commnity structures.
+
 
 \noindent 
 \section{Software implementation}\label{sof}
