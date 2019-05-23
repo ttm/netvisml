@@ -246,7 +246,7 @@ the definition of the uncoarsening phase desired;
 for the navigation of the network,
 including the access to metadata and changes to the visualization achieved;
 for uncoarsening supernodes;
-and for tunning the achieved visual mapping status, such as by resizing
+and for tuning the achieved visual mapping status, such as by resizing
 and moving nodes.
 The overall procedure is delineated in Algorithm~\ref{alg} and further
 detailed in Sections~\ref{nav} and~\ref{sof}.
@@ -315,16 +315,50 @@ details by a number of operations, most importantly:
 \end{itemize}
 
 Other operations are convenient to make the visual mapping adequate for the diverse settings possible:
-network size, open supervertices, levels exposed, and topological features such as commnity structures.
+network size, open supervertices, levels exposed, and topological features such as community structures.
+The navigations pathway, already as achieved within the software we made available, is illustrated in Figure~\ref{fnav}.
 
+\begin{figure}[!h]\centering
+ \includegraphics[width=0.6\textwidth]{fnav}
+  \caption{The navigation pathway of the bipartite network obtained through a multilevel strategy
+  and auxiliary tools.
+  }\label{fnav}
+\end{figure}
 
 \noindent 
-\section{Software implementation}\label{sof}
+\section{Software implementation: mlvis}\label{sof}
 %%%
 % description of the functionalities/tools implemented,
 % of the technologies and libraries used
 % optimization of the computational capacity for large networks by
 % means of Web GL, triangles for nodes and details on demand
+We implemented the framework described in Section~\ref{des} using scientific,
+database and web resources,
+and made the final result available to the user within a web page
+for use through simple mouse-driven actions
+and requiring the instalation of no software but a web browser such as Firefox or Google Chrome.
+The final result is exemplified in Figure~\ref{fpage} and next subsections
+describe its functionalities and the technologies used.
+
+\begin{figure}[!h]\centering
+ \includegraphics[width=\textwidth]{fpage}
+  \caption{The navigation pathway of the bipartite network obtained through a multilevel strategy
+  and auxiliary tools.
+  }\label{fpage}
+\end{figure}
+
+\subsection{The use of mlvis}
+% network upload, format.
+% layouts available
+% algorithms available for coarsening, and their parametrization
+% initialization of the visualization: click on render
+% tools available and their operation
+
+\subsection{Technologies used within mlvis}
+% coarsening algorithms
+% flask for server, feather for auxiliary server
+% mongodb filesystem for data
+% Nuxt/Vue.js for the frontend with heavy use of PIXI.js
 
 \section{Results and discussion}\label{res}
 %%%
@@ -332,10 +366,16 @@ network size, open supervertices, levels exposed, and topological features such 
 % a first contribution on ML vis. of bipartite networks
 % simple interactivity strategies
 
+% enhancements of the navigation through the use of being-developed coarsening algorithms
+% the use of the interface for guiding coarsening (through markers)
+% the use of the interface to analyse coarsening results
+
+% technologies used: maybe simpler if using meteor.js
+% and simpler to achieve multiuser interactivity
+
 \section{Conclusions and further work}\label{con}
 %%%
 % extension to multipartite (or heterogeneous) networks.
-% use for marking nodes as pivots for coarsening
 
 \bibliographystyle{splncs04}
 \bibliography{biblio}
