@@ -100,7 +100,7 @@ This paper is organized as follows: in Section~\ref{rel} the related work is exa
 while in~\ref{nom} are selected remarks about the vocabulary.
 The method is delineated in Section~\ref{des} and
 the software implementation is then described in Section~\ref{sof}.
-Results and discussion are in~\ref{res}.
+% Results and discussion are in~\ref{res}.
 Finally, Section~\ref{con} holds concluions and further work envisioned.
 
 \subsection{Related work}\label{rel}
@@ -360,19 +360,81 @@ describe its functionalities and the technologies used.
 % algorithms available for coarsening, and their parametrization
 % initialization of the visualization: click on render
 % tools available and their operation
+The exposition on this section is suported by Figure~\ref{usage}.
+The analyst first selects a network of interest to be explored.
+One may also upload a network and then select it on the same drop-down menu.
+The software is then ready to render the network on the screen for arbitrary
+navigation, but the user may wish to select one of the available network layout
+algorithms and tune the coarsening to be performed.
+Upon request given by hiting the ``render network'' button,
+the network is mapped to the screen.
+The subsequent usage relies on the manipulation of the visual mapping presented on the
+canvas by means of actions
+performed through managing the tools and related mouse operations.
 
-\subsection{Technologies used within mlvis}
+There are multiple levels of representation, which is entailed by the multilevel strategy.
+This makes pertinent that actions be performed in only one of the available levels.
+Thus, there is always a ``level on focus'' in which the tools perform actions, such
+as link coloring or opening supernodes to expose their child nodes.
+The first button on the toolbar is thus for changing the level on focus.
+The second set of buttons are for changing how the nodes are visualized:
+color, size, if size is related to degree or number of children, restore node size,
+node transparency, and rotation.
+The third set of tool buttons if for links: color, thickness, transparency, if thickness and
+transparency are related to link weight, and restor link properties.
+
+The fourth set of tool buttons is more specific to the needs of the MlBiNetViz, and
+are selected to make mouse operations entail special processes and transformations of the visualization.
+The first button is selected for the interface to return core information from a clicked node:
+id, number of children, id of parent, number of neighbors (degree), sum of weight of links (strength), and other information the analysts report necessity of.
+The second tool button is seleted to move nodes: specific nodes are individually moved if clicked and dragged; a rectangular region is made available for moving all nodes therein if an empty region of the canvas is clicked and the mouse cursor dragged before releasing the button.
+The third tool button is selected for opening a supernode and exposing their child nodes and links among them:
+a region is defined by the user by clicking on an empty space on the canvas and gragging the mouse before releasing, the supernodes therein are joined into a rectangular region that contains all of them, and their child nodes (on a finer level of detail) are drawn inside such rectangular region.
+Open supernodes may be joined using the same tool, but it was found convenient to make available a
+fourth button to assist in this task: if this tool is selected, one may join two open supernodes by
+clicking on them in sequence.
+The last tool button is selected to perform three operations on open supernodes:
+if an open supernode is clicked on and dragged, the rectangular shape is resized accordingly;
+if there is no drag, i.e. the super node is clicked on and released, the links from it to the other
+supernodes are attached to the next counterclockwise corner of its rectagular region.
+When the open supernode is resized, the layout of its child nodes is optimized for the drawn region.
+This is most useful when used in combination with the drag tool: on the finer level of detail, the nodes are repositioned into a more compact disposition. Then upon a (potentially minimal) supernode
+risize, the child nodes are made to fit the whole rectangular area.
+
+The last set of tools acts on the whole canvas: they are dedicated to zoom and left-right, up-down pan, changing the color of the background, and toggling between current zoom and pan status and the initial setting.
+
+There are many subleties on the orchestrated use of these tools.
+As a facilitated means to convey the navigation possibilities and
+procedures available, the user is invited to watch a demo video in~\cite{yvideo},
+and use the MlBiNetViz in the instance we made availabel~\cite{mbnvpage}.
+The more seasoned software developer may browser the code, upload a local instance
+of the software, and make changes to its source code~\cite{mbnvcode}.
+
+\subsection{Software technologies employed within mlvis}
 % coarsening algorithms
 % flask for server, feather for auxiliary server
 % mongodb filesystem for data
 % Nuxt/Vue.js for the frontend with heavy use of PIXI.js
+Most important parts of MlBiNetViz are written in a combination of JavaScript and Python:
+Vue.js (set up by Nuxt.js) is used to assist in the client (frontend),
+the server (backend) is a Flask Python server, used to perform
+specific or heavy calculations.
+There is a secondery server, a node FeatherJS, used to facilitate contact with the database
+and real-time multi-user interaction.
+The data is stored in a MongoDB database and ordinarily in the filesystem,
+while the multi-user interaction was deactivated for now to avoid unecessary complexity.
+The coarsening algorithms for bipartite networks are available in~\cite{bialgs}
+and are used by the Flask server.
+The fast WebGL 2D rendering on the canvas is performed using Pixi.js.
+This is a very brief account of the styles and software resources used to implement
+MlBiNetViz. The interested reader is welcome to browse the software code and documentation
+and contact the authors~\cite{mbvncode}.
 
-\section{Results and discussion}\label{res}
+% \section{Results and discussion}\label{res}
 %%%
 % consistent use of overview first, details on demand
 % a first contribution on ML vis. of bipartite networks
 % simple interactivity strategies
-
 % enhancements of the navigation through the use of being-developed coarsening algorithms
 % the use of the interface for guiding coarsening (through markers)
 % the use of the interface to analyse coarsening results
@@ -383,6 +445,18 @@ describe its functionalities and the technologies used.
 \section{Conclusions and further work}\label{con}
 %%%
 % extension to multipartite (or heterogeneous) networks.
+The resulting conceptual organization is very consistent with the Shneiderman's mantra,
+as exemplified the by the implemented software.
+Also, it is the first contribution to bipartite networks visual analytics
+assited by multilevel strategies.
+The interface developed is efficiently managed through simple interactive operations.
+
+The navigation may be enhanced by the use of in-development coarsening algorithms.
+The visualization pathway should be used to assist multilevel strategies by enabling the user
+to select nodes as pivots to guide the coarsening procedure.
+Also, the interface is envioned to assist the analysis of coarsening results.
+The bipartite framework is naturally extended to heterogeneous (or multipartite) networks,
+which may be a research route we will follow if there is enough interest of the researchers involved.
 
 \bibliographystyle{splncs04}
 \bibliography{biblio}
