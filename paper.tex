@@ -176,7 +176,7 @@ Accordingly, our methods and software may be understood as data visualization wi
 
 
 \subsection{Multilevel coarsening of bipartite networks}\label{bac}
-Before~\cite{alan2}, multilevel approaches were not directly aplicable to bipartite networks.
+Before~\cite{alan2}, multilevel approaches were not directly applicable to bipartite networks.
 Such work introduced novel and efficient matching and coarsening algorithms,
 and scrutinized their validity for solving optimization problems, dimensionality reduction,
 and in the preservation of essential topological features of the original network.
@@ -209,7 +209,7 @@ most often a matching $M$ consists in a set of non-adjacent links,
 i.e. $\forall\; l_1, l_2 \in M, u \in l_1 \Rightarrow u \notin l_2$.
 The heavy-edge matching, for example, is a matching that fits this canonical description
 in attempting to maximize total matching weight, but the matching may not satisfy such restrictions.
-Selecting clicks and other larger node sets to be merged into supernodes are possibilites
+Selecting clicks and other larger node sets to be merged into supernodes are possibilities
 under development.
 %%%
 % citar alguem aqui?
@@ -243,7 +243,7 @@ i.e. the solution finding phase is the visualization of the network by means of
 the reduced representation.
 The uncoarsening is performed only on demand through user requests
 to visualize network supernodes in more detail,
-thus avoiding unecessary complexity and,
+thus avoiding unnecessary complexity and,
 most importantly, avoiding to overload the visualization with information beyond the
 cognitive convenience of the user and the computational power that the machine being used
 is able to provide for real-time interactivity.
@@ -347,7 +347,7 @@ We implemented the framework described in Section~\ref{des} using scientific,
 database and web resources,
 and made the final result available to the user within a web page
 for use through simple mouse-driven actions
-and requiring the instalation of no software but a web browser such as Firefox or Google Chrome.
+and requiring the installation of no software but a web browser such as Firefox or Google Chrome.
 The final software was named MlBiNetVis (from Multilevel Bipartite Network Visualization)
 and is exemplified in Figures~\ref{fpage0},~\ref{initial} and~\ref{secondPhase}.
 Next subsections describe its functionalities and the technologies used.
@@ -376,8 +376,8 @@ the analyst first selects a network of interest to be explored.
 One may also upload a network and then select it on the same drop-down menu.
 The user may then wish to select one of the available network layout
 algorithms and tune the coarsening to be performed, but default settings are reasonable
-for the newcommer.
-Upon request given by hiting the ``render network'' button,
+for the newcomer.
+Upon request given by hitting the ``render network'' button,
 the network is mapped to the screen.
 Subsequent usage relies on manipulation of the visual mapping presented on the
 canvas by means of actions
@@ -391,7 +391,7 @@ These steps are illustrated in Figure~\ref{initial}.
   The blue button at the bottom is a drop-down menu where the user picks the node-link
   layout algorithm.
   The green button is for rendering the network to the canvas and initializing further widgets.
-  By hitting the green button, all the elements in this image is made disbled, except for the layout
+  By hitting the green button, all the elements in this image is made disabled, except for the layout
   button.
   Further information is given in Section~\ref{use}.
   }\label{initial}
@@ -402,8 +402,8 @@ This makes pertinent that one and only of the available levels is explicitly sel
 so that the transformations are performed on that level.
 Thus, there is always a selected level in which the tools perform actions, such
 as link coloring or opening supernodes to expose their predecessor nodes.
-As can be infered by the reader,
-the number of nodes and links in each level which are visible are not fixed thoughout the
+As can be inferred by the reader,
+the number of nodes and links in each level which are visible are not fixed throughout the
 navigation.
 The selection of the level to which the transformations should apply, and the number
 of visible and total nodes and links in each level, are exposed in the table to the right
@@ -416,7 +416,7 @@ by left/right clicks on the corresponding colored cell.
  \includegraphics[width=\textwidth]{secondPhase}
   \caption{The elements in second step of the MlBiNetVis usage, dedicated to navigation on the network and transformation of the visualization.
   The user may change the layout used when supernodes are opened and the predecessors are then shown on the screen.
-  Links may be shown or hided for all the levels by using the checkbutton.
+  Links may be shown or hided for all the levels by using the checkbox.
   The text area assists in the output of information requested or useful for navigation.
   The canvas holds the node-link representations of the levels, which are transformed using the tools in the toolbar and the table in the right-side.
   Such table also makes evident key information about the status of the visualization.
@@ -436,12 +436,12 @@ The first button is selected for the interface to return core information from a
 id, level, number of predecessors of previous level, id of successor (if node is not on the last level),
 number of neighbors (degree), sum of weight of links (strength).
 Other information the analysts report necessity of are easily implemented, but currently only these informations
-are returned to avoid unecessarily flooding the text area.
-The second tool button is seleted to move nodes: specific nodes are individually moved if clicked and dragged;
+are returned to avoid unnecessarily flooding the text area.
+The second tool button is selected to move nodes: specific nodes are individually moved if clicked and dragged;
 a rectangular region is made available for moving all nodes therein if an empty region of the canvas
 is clicked and the mouse cursor dragged before releasing the button.
 The third tool button is selected for opening supernodes and exposing their predecessor nodes and links among them:
-a region is defined by the user by clicking on an empty space on the canvas and gragging the mouse before releasing,
+a region is defined by the user by clicking on an empty space on the canvas and dragging the mouse before releasing,
 the supernodes therein are joined into a rectangular region that contains all of them,
 and their predecessor nodes (which are on a finer level of detail) are drawn inside such rectangular region.
 Open supernodes may be joined using the same tool, but it was found convenient to make available a
@@ -450,22 +450,22 @@ clicking on them in sequence.
 The last tool button in this group is selected to perform three operations on open supernodes:
 if an open supernode is clicked on and dragged, the rectangular shape is resized accordingly;
 if there is no drag, i.e. the super node is clicked on and released, the links from it to the other
-supernodes are attached to the next counterclockwise corner of its rectagular region.
+supernodes are attached to the next counterclockwise corner of its rectangular region.
 When the open supernode is resized, the layout of its child nodes is optimized for the drawn region.
 This is most useful when used in combination with the drag tool:
 on the finer level of detail, the nodes are repositioned into a more compact disposition.
 Then upon a (potentially minimal) supernode
-risize, the child nodes are made to fit the whole rectangular area.
+resize, the child nodes are made to fit the whole rectangular area.
 The last set of tools acts on the whole canvas:
 changing the color of the background, zoom, left-right/up-down pan,
 rotation of the entire network,
 and toggling between current zoom and pan status and the initial setting.
 The toolbar is contextualized in Figure~\ref{secondPhase}.
 
-There are many subleties on the orchestrated use of these tools.
+There are many subtleties on the orchestrated use of these tools.
 As a facilitated means to convey the navigation possibilities and
 procedures available, the user is invited to watch a demo video in~\cite{yvideo},
-and use the MlBiNetVis interface through the instance we made availabe~\cite{mbnvpage}.
+and use the MlBiNetVis interface through the instance we made available~\cite{mbnvpage}.
 The more seasoned software developer may browse the code, upload a local instance
 of the software, and make changes to its source code~\cite{mbnvcode}.
 
@@ -478,10 +478,10 @@ Most important parts of MlBiNetViz are written in a combination of JavaScript an
 Vue.js (set up by Nuxt.js) is used to assist in the client (frontend),
 the server (backend) is a Flask Python server, used to perform
 specialized or heavy calculations.
-There is a secondery server, a FeatherJS, used to facilitate contact with the database
+There is a secondary server, a FeatherJS, used to facilitate contact with the database
 and real-time multi-user interaction.
-The data is stored in a MongoDB database and ordinarily in the filesystem,
-while the multi-user interaction was deactivated for now to avoid unecessary complexity.
+The data is stored in a MongoDB database and ordinarily in the file system,
+while the multi-user interaction was deactivated for now to avoid unnecessary complexity.
 The coarsening algorithms for bipartite networks are available in~\cite{bialgs}
 and are used by the Flask server.
 The fast WebGL 2D rendering on the canvas is performed using Pixi.js.
@@ -517,7 +517,7 @@ and contact the authors~\cite{mbnvcode}.
 %%%
 % extension to multipartite (or heterogeneous) networks.
 We have described and made available the first visualization interface for bipartite networks
-assited by multilevel strategies.
+assisted by multilevel strategies.
 The resulting conceptual organization is very consistent with the Shneiderman's mantra,
 as exemplified the by the implemented software.
 The interface developed is efficiently managed through simple interactive operations,
@@ -530,13 +530,13 @@ of multilevel strategies for the visualization of large bipartite networks.
 In further steps, the navigation may be enhanced by the acute use of in-development coarsening algorithms.
 The visualization pathway is being envisioned as capable to assist the development of novel
 multilevel strategies, which should be verified.
-Also, there are multilevel strategies that involve the selection of nodes as pivors
+Also, there are multilevel strategies that involve the selection of nodes as pivots
 to guide the coarsening procedure, a process to which there is no visual interface,
 and to which MlBiNetVis should be adapted.
-Also, the interface is envioned to assist the analysis of coarsening results. As in the current version of MlBiNetVis,
+Also, the interface is envisioned to assist the analysis of coarsening results. As in the current version of MlBiNetVis,
 the analyst is able to scrutinize linking patterns and overall network structure though the node-link diagram,
 and requesting information, but this should be enhanced by the display of histograms and global measures of each level.
-On the analysis of the networked structures, the navigation involving metadata, such as from genes and proteines, or as
+On the analysis of the networked structures, the navigation involving metadata, such as from genes and proteins, or as
 documents and authors, should result in a visual analytics interface for interactive knowledge discovery.
 Finally, bipartite networks are naturally extended to heterogeneous (or multipartite) networks,
 and thus all the content of this article, and should require further research and development for the achievement
