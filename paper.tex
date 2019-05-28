@@ -143,7 +143,7 @@ A thorough exposition of the vocabulary is beyond the scope of this article, but
 some attention for the issue is helpful to assist searches and newcomers.
 
 \section{Method description}\label{des}
-\subsection{Fundamental concepts}\label{bac}
+\subsection{Fundamental concepts}
 A bipartite network $G=(V,E)$ consists in a set $V$ of nodes which is partitioned in two subsets
 with no links between nodes in the same set, i.e. $\exists\; V_1, V_2:\; V_1\cup V_2 = V,\;V_1\cap V_2 = \emptyset$, and $E\subseteq V_1 \times V_2$.
 The variable names are borrowed from more traditional
@@ -175,7 +175,7 @@ For this present work to be better characterized as a visual analytics contribut
 Accordingly, our methods and software may be understood as data visualization with explicit visual analytics elements, such as interactivity, on-demand supply of information, and selective navigation.
 
 
-\subsection{Multilevel coarsening of bipartite networks}\label{bac}
+\subsection{Multilevel coarsening of bipartite networks}
 Before~\cite{alan2}, multilevel approaches were not directly applicable to bipartite networks.
 Such work introduced novel and efficient matching and coarsening algorithms,
 and scrutinized their validity for solving optimization problems, dimensionality reduction,
@@ -189,13 +189,13 @@ where the solution found in the coarsest network $G_L$ is projected back to the 
 uncoarsened, network $G_0$.
 Figure~\ref{mlf} illustrates such process.
 
-\begin{figure}[!h]\centering
+\begin{figure}\centering
  \includegraphics[width=\textwidth]{mlf}
   \caption{Phases of the multilevel optimization.
   A sequence of incrementally reduced networks is obtained in the coarsening phase.
   An initial solution found at the coarsest network, in the solution finding phase,
   and is projected back to the initial, uncoarsened, network, in the uncoarsening phase.
-  Further details are given in Section~\ref{bac} and specificities related to these
+  Further details are given in Section~\ref{des} and specificities related to these
   phases when applied to interactive data visualization are in Sections~\ref{net} and~\ref{nav}.
   }\label{mlf}
 \end{figure}
@@ -328,7 +328,7 @@ network size, open supervertices, levels exposed, and topological features such 
 These operations are detailed in Section~\ref{sof}.
 The navigations pathway, already as achieved within the software we made available, is illustrated in Figure~\ref{fnav}.
 
-\begin{figure}[!h]\centering
+\begin{figure}\centering
  \includegraphics[width=0.8\textwidth]{fnav___}
   \caption{The navigation pathway of bipartite networks obtained through a multilevel strategy
   and auxiliary tools.
@@ -352,7 +352,7 @@ The final software was named MlBiNetVis (from Multilevel Bipartite Network Visua
 and is exemplified in Figures~\ref{fpage0},~\ref{initial} and~\ref{secondPhase}.
 Next subsections describe its functionalities and the technologies used.
 
-\begin{figure}[!h]\centering
+\begin{figure}\centering
  \includegraphics[width=\textwidth]{overall____}
   \caption{The MlBiNetVis interface. (1) is the dropdown menu for choosing the network to analyse or uploading new ones.
   The gray box in (2) contains widgets to select and parametrize the coarsening algorithm.
@@ -383,7 +383,7 @@ Subsequent usage relies on manipulation of the visual mapping presented on the
 canvas by means of actions
 performed through managing the tools and related mouse operations.
 These steps are illustrated in Figure~\ref{initial}.
-\begin{figure}[!h]\centering
+\begin{figure}\centering
  \includegraphics[width=\textwidth]{initial_}
   \caption{The elements in the initial step of the MlBiNetVis usage.
   The button at the top is for network upload and selection.
@@ -412,7 +412,7 @@ In the same table, the user may change the color and shape of the nodes in each 
 a level, the color of the links of a level, and toggle show/hide of the links is a level,
 by left/right clicks on the corresponding colored cell.
 
-\begin{figure}[!h]\centering
+\begin{figure}\centering
  \includegraphics[width=\textwidth]{secondPhase}
   \caption{The elements in second step of the MlBiNetVis usage, dedicated to navigation on the network and transformation of the visualization.
   The user may change the layout used when supernodes are opened and the predecessors are then shown on the screen.
@@ -549,26 +549,3 @@ The elements in Figure~\ref{initial}.
 
 \bibliographystyle{splncs04}
 \bibliography{biblio}
-%
-% \begin{thebibliography}{8}
-% \bibitem{ref_article1}
-% Author, F.: Article title. Journal \textbf{2}(5), 99--110 (2016)
-% 
-% \bibitem{ref_lncs1}
-% Author, F., Author, S.: Title of a proceedings paper. In: Editor,
-% F., Editor, S. (eds.) CONFERENCE 2016, LNCS, vol. 9999, pp. 1--13.
-% Springer, Heidelberg (2016). \doi{10.10007/1234567890}
-% 
-% \bibitem{ref_book1}
-% Author, F., Author, S., Author, T.: Book title. 2nd edn. Publisher,
-% Location (1999)
-% 
-% \bibitem{ref_proc1}
-% Author, A.-B.: Contribution title. In: 9th International Proceedings
-% on Proceedings, pp. 1--2. Publisher, Location (2010)
-% 
-% \bibitem{ref_url1}
-% LNCS Homepage, \url{http://www.springer.com/lncs}. Last accessed 4
-% Oct 2017
-% \end{thebibliography}
-\end{document}
