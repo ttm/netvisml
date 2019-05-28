@@ -75,7 +75,7 @@ Maria Cristina Ferreira de Oliveira\orcidID{0000-0002-4729-5104}}
 The visualization of large-scale networks poses challenges both in terms of computational costs
 and of effective presentation of the information to the user~\cite{tang,staudt}.
 These issues may be aggravated in the case of bipartite networks,
-due to their sparsity and topological complexities~\cite{alan1}.
+due to their sparsity and topological complexities.
 Bipartite networks are comprised of two partitions of nodes,
 called ``layers'',
 and links are not incident between nodes in the same partition.
@@ -157,20 +157,20 @@ A multilevel strategy consists in obtaining a hierarchy of coarsened networks $G
 and where $|V_i| \geq |V_{i+1}|$.
 The coarsening procedure requires two algorithms, the \emph{matching}, that defines the nodes to be collapsed, and the \emph{contraction}, which builds the reduced representation
 from the matched nodes.
-There are several coarsening algorithms reported in the scientific literature~\cite{}, a few of them
-developed for bipartite networks~\cite{}.
-A detailed exposition of these algorithms is found on the bibliography~\cite{} and is beyond the scope of this article.
+There are several coarsening algorithms reported in the scientific literature~\cite{co1,co2}, a few of them
+developed for bipartite networks~\cite{alan2}.
+A detailed exposition of these algorithms is found on the bibliography and is beyond the scope of this article.
 Most importantly, we are interested in coarsening suited for bipartite networks,
 as it has yielded simplified networks which present essential topological features
 of the original networks,
 and such result is perceived in the visualization as hinted in~\cite{alan2} and further shown in
 Section~\ref{sof}.
 
-Visual analytics is the scientific field dedicated to analytical reasoning assisted by interactive visual interfaces~\cite{}.
+Visual analytics is the scientific field dedicated to analytical reasoning assisted by interactive visual interfaces~\cite{visAn}.
 Therefore, the area is specially concerned with coupling interactive visual representations with sense and decision making.
 Of special relevance for the present work, the techniques are most often employed to amplify human capabilities in specific ways,
 which includes reducing the search space, enhancing the recognition of patterns and the inference of relationships,
-and providing a manipulable medium for the exploration of the information of interest~\cite{}.
+and providing a manipulable medium for the exploration of the information of interest.
 For this present work to be better characterized as a visual analytics contribution, the methods described in this section and software described in Section~\ref{sof} should further enable the discovery of information, such as metadata of the networks (e.g. authors, words or documents).
 Accordingly, our methods and software may be understood as data visualization with explicit visual analytics elements, such as interactivity, on-demand supply of information, and selective navigation.
 
@@ -348,26 +348,24 @@ database and web resources,
 and made the final result available to the user within a web page
 for use through simple mouse-driven actions
 and requiring the instalation of no software but a web browser such as Firefox or Google Chrome.
-The final software was named MlBiNetVis (from Multilevel Bipartite Network Visualization),
-is exemplified in Figures~\ref{fpage0} and~\ref{fpage}.
-% TTM
+The final software was named MlBiNetVis (from Multilevel Bipartite Network Visualization)
+and is exemplified in Figures~\ref{fpage0},~\ref{initial} and~\ref{secondPhase}.
 Next subsections describe its functionalities and the technologies used.
 
 \begin{figure}[!h]\centering
- \includegraphics[width=\textwidth]{fpage0}
-  \caption{The navigation pathway of the bipartite network obtained through a multilevel strategy
-  and auxiliary tools.
+ \includegraphics[width=\textwidth]{overall____}
+  \caption{The MlBiNetVis interface. (1) is the dropdown menu for choosing the network to analyse or uploading new ones.
+  The gray box in (2) contains widgets to select and parametrize the coarsening algorithm.
+  (3) is the render button, which maps the network to the screen.
+  In (4) are auxiliary widgets for selecting the  layout, show/hide of links, and for the interface to output information requested by the user or useful to assist navigation.
+  In (5) is an interactive table which holds information about the levels and layers of the bipartite network and may be used to set the visualization on the canvas.
+  In (6) is the toolbar that enables the navigation of the network and fine-tuning the visualization.
+  In (7) is the canvas in which the network is drawn through node-link diagrams.
+  Section~\ref{use} describes the use of these elements in further detail.
   }\label{fpage0}
 \end{figure}
 
-\begin{figure}[!h]\centering
- \includegraphics[width=\textwidth]{fpage}
-  \caption{The navigation pathway of the bipartite network obtained through a multilevel strategy
-  and auxiliary tools.
-  }\label{fpage}
-\end{figure}
-
-\subsection{The use of MlBiNetVis}
+\subsection{The use of MlBiNetVis}\label{use}
 % network upload, format.
 % layouts available
 % algorithms available for coarsening, and their parametrization
@@ -385,8 +383,19 @@ Subsequent usage relies on manipulation of the visual mapping presented on the
 canvas by means of actions
 performed through managing the tools and related mouse operations.
 These steps are illustrated in Figure~\ref{initial}.
-
-% expose about text area, show links checkbox, layout button, and other elements. TTM
+\begin{figure}[!h]\centering
+ \includegraphics[width=\textwidth]{initial_}
+  \caption{The elements in the initial step of the MlBiNetVis usage.
+  The button at the top is for network upload and selection.
+  In the gray box, the user chooses and sets the coarsening algorithm as detailed in Appendix~\ref{ap}.
+  The blue button at the bottom is a drop-down menu where the user picks the node-link
+  layout algorithm.
+  The green button is for rendering the network to the canvas and initializing further widgets.
+  By hitting the green button, all the elements in this image is made disbled, except for the layout
+  button.
+  Further information is given in Section~\ref{use}.
+  }\label{initial}
+\end{figure}
 
 There are multiple levels of representation entailed by the multilevel strategy.
 This makes pertinent that one and only of the available levels is explicitly selected
@@ -402,7 +411,18 @@ of the canvas, as in Figure~\ref{secondPhase}.
 In the same table, the user may change the color and shape of the nodes in each layer of
 a level, the color of the links of a level, and toggle show/hide of the links is a level,
 by left/right clicks on the corresponding colored cell.
-These operations are illustrated in Figure~\ref{using}.
+
+\begin{figure}[!h]\centering
+ \includegraphics[width=\textwidth]{secondPhase}
+  \caption{The elements in second step of the MlBiNetVis usage, dedicated to navigation on the network and transformation of the visualization.
+  The user may change the layout used when supernodes are opened and the predecessors are then shown on the screen.
+  Links may be shown or hided for all the levels by using the checkbutton.
+  The text area assists in the output of information requested or useful for navigation.
+  The canvas holds the node-link representations of the levels, which are transformed using the tools in the toolbar and the table in the right-side.
+  Such table also makes evident key information about the status of the visualization.
+  Further information is given in Section~\ref{use}.
+  }\label{secondPhase}
+\end{figure}
 
 The toolbar holds buttons for further actions to be performed and are divided in groups.
 The first group is for changing how the nodes are visualized: size, proportionality to
@@ -440,7 +460,7 @@ The last set of tools acts on the whole canvas:
 changing the color of the background, zoom, left-right/up-down pan,
 rotation of the entire network,
 and toggling between current zoom and pan status and the initial setting.
-The toolbar is contextualized in Figure~\ref{using} and their use is illustrated in Figure~\ref{tools}.
+The toolbar is contextualized in Figure~\ref{secondPhase}.
 
 There are many subleties on the orchestrated use of these tools.
 As a facilitated means to convey the navigation possibilities and
@@ -479,7 +499,7 @@ even using ordinary machines (e.g. with 8GB RAM DDR3, an i7 processor of the fir
 
 This is a very brief account of the styles and software resources used to implement
 MlBiNetVis. The interested reader is welcome to browse the software code and documentation
-and contact the authors~\cite{mbvncode}.
+and contact the authors~\cite{mbnvcode}.
 
 % \section{Results and discussion}\label{res}
 %%%
@@ -521,6 +541,11 @@ documents and authors, should result in a visual analytics interface for interac
 Finally, bipartite networks are naturally extended to heterogeneous (or multipartite) networks,
 and thus all the content of this article, and should require further research and development for the achievement
 of concrete derivatives.
+
+\appendix
+
+\section{Choice and fine-tuning of the coarsening algorithm}\label{ap}
+The elements in Figure~\ref{initial}.
 
 \bibliographystyle{splncs04}
 \bibliography{biblio}

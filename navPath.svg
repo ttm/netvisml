@@ -312,8 +312,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.24748737"
-     inkscape:cx="532.87695"
-     inkscape:cy="1052.8652"
+     inkscape:cx="-141.90495"
+     inkscape:cy="991.54286"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -7498,7 +7498,9 @@ H0I8UIB8pBVvAAAAAElFTkSuQmCC
 "
        preserveAspectRatio="none"
        height="154.78125"
-       width="208.22708" />
+       width="208.22708"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
     <image
        y="-159.88969"
        x="-61.001801"
@@ -9897,7 +9899,9 @@ AAAAAElFTkSuQmCC
 "
        preserveAspectRatio="none"
        height="154.78101"
-       width="208.22701" />
+       width="208.22701"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
     <image
        y="52.362579"
        x="-334.82364"
@@ -12029,7 +12033,9 @@ RU5ErkJggg==
 "
        preserveAspectRatio="none"
        height="154.681"
-       width="208.22701" />
+       width="208.22701"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
     <image
        y="52.31242"
        x="-61.001804"
@@ -14492,6 +14498,8 @@ Ynk0EVkVEjkkWduAkAAAWIVwJwAAZ9QhJhRKSCjRkFuSdZshrwRCAgCgHwQFAIATyhcTyuDWhYRI
 "
        preserveAspectRatio="none"
        height="154.78101"
-       width="208.22701" />
+       width="208.22701"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
   </g>
 </svg>
