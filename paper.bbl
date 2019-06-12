@@ -1,0 +1,177 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{a1}
+Abello, J., Van~Ham, F., Krishnan, N.: Ask-graphview: A large scale graph
+  visualization system. IEEE Transactions on Visualization and Computer
+  Graphics  \textbf{12}(5),  669--676 (2006)
+
+\bibitem{mlCa}
+AlQuraishi, M., Koytiger, G., Jenney, A., MacBeath, G., Sorger, P.K.: A
+  multiscale statistical mechanical framework integrates biophysical and
+  genomic data to assemble cancer networks. Nature genetics  \textbf{46}(12),
+  ~1363 (2014)
+
+\bibitem{u6}
+Archambault, D., Munzner, T., Auber, D.: Topolayout: Multilevel graph layout by
+  topological features. IEEE Transactions on Visualization and Computer
+  Graphics  \textbf{13}(2),  305--317 (2007)
+
+\bibitem{a2}
+Archambault, D., Munzner, T., Auber, D.: Grouseflocks: Steerable exploration of
+  graph hierarchy space. IEEE Transactions on Visualization and Computer
+  Graphics  \textbf{14}(4),  900--913 (2008)
+
+\bibitem{u8}
+Arleo, A., Didimo, W., Liotta, G., Montecchiani, F.: A distributed multilevel
+  force-directed algorithm. In: International Symposium on Graph Drawing and
+  Network Visualization. pp. 3--17. Springer (2016)
+
+\bibitem{bara}
+Barab{\'a}si, A.L., Gulbahce, N., Loscalzo, J.: Network medicine: a
+  network-based approach to human disease. Nature reviews genetics
+  \textbf{12}(1), ~56 (2011)
+
+\bibitem{u9}
+Bartel, G., Gutwenger, C., Klein, K., Mutzel, P.: An experimental evaluation of
+  multilevel layout methods. In: International Symposium on Graph Drawing. pp.
+  80--91. Springer (2010)
+
+\bibitem{a4}
+Batagelj, V., Brandenburg, F.J., Didimo, W., Liotta, G., Palladino, P.,
+  Patrignani, M.: Visual analysis of large graphs using (x, y)-clustering and
+  hybrid visualizations. IEEE Transactions on Visualization and Computer
+  Graphics  \textbf{17}(11),  1587--1598 (2010)
+
+\bibitem{co2}
+Blum, C., Roli, A., Sampels, M.: Hybrid metaheuristics: an emerging approach to
+  optimization, vol.~114. Springer (2008)
+
+\bibitem{cintra2019}
+Cintra, D., Valejo, A., Lopes, A., Oliveira, M.: Visualization to assist
+  interpretation of the multilevel paradigm in bipartite graphs. In: Submitted
+  Graph Drawing and Network Visualization (2019)
+
+\bibitem{a5}
+Dias, M.D., Mansour, M.R., Dias, F., Petronetto, F., Silva, C.T., Nonato, L.G.:
+  A hierarchical network simplification via non-negative matrix factorization.
+  In: 30th SIBGRAPI Conference on Graphics, Patterns and Images (SIBGRAPI). pp.
+  119--126. IEEE (2017)
+
+\bibitem{u5}
+Frishman, Y., Tal, A.: Multi-level graph layout on the gpu. IEEE Transactions
+  on Visualization and Computer Graphics  \textbf{13}(6),  1310--1319 (2007)
+
+\bibitem{movie}
+Gruji{\'c}, J.: Movies recommendation networks as bipartite graphs. In:
+  International Conference on Computational Science. pp. 576--583. Springer
+  (2008)
+
+\bibitem{guillaume0}
+Guillaume, J.L., Latapy, M.: Bipartite structure of all complex networks.
+  Information Processing Letters  \textbf{90}(5),  215--221 (2004)
+
+\bibitem{guillaume}
+Guillaume, J.L., Latapy, M.: Bipartite graphs as models of complex networks.
+  Physica A: Statistical Mechanics and its Applications  \textbf{371}(2),
+  795--813 (2006)
+
+\bibitem{u4}
+Hachul, S., J{\"u}nger, M.: Drawing large graphs with a potential-field-based
+  multilevel algorithm. In: International Symposium on Graph Drawing. pp.
+  285--295. Springer (2004)
+
+\bibitem{u1}
+Harel, D., Koren, Y.: A fast multi-scale method for drawing large graphs. In:
+  International Symposium on Graph Drawing. pp. 183--196. Springer (2000)
+
+\bibitem{u10}
+Hinge, A., Richer, G., Auber, D.: Mugdad: Multilevel graph drawing algorithm in
+  a distributed architecture. In: Conference on Computer Graphics,
+  Visualization and Computer Vision. p.~189 (2017)
+
+\bibitem{u3}
+Hu, Y.: Efficient, high-quality force-directed graph drawing. Mathematica
+  Journal  \textbf{10}(1),  37--71 (2005)
+
+\bibitem{gene}
+Hwang, T., Sicotte, H., Tian, Z., Wu, B., Kocher, J.P., Wigle, D.A., Kumar, V.,
+  Kuang, R.: Robust and efficient identification of biomarkers by classifying
+  features on graphs. Bioinformatics  \textbf{24}(18),  2023--2029 (2008)
+
+\bibitem{sci}
+Newman, M.E.: Scientific collaboration networks. i. network construction and
+  fundamental results. Physical review E  \textbf{64}(1),  016131 (2001)
+
+\bibitem{ml2}
+Noack, A., Rotta, R.: Multi-level algorithms for modularity clustering. In:
+  International Symposium on Experimental Algorithms. pp. 257--268. Springer
+  (2009)
+
+\bibitem{doc}
+de~Paulo~Faleiros, T., Rossi, R.G., de~Andrade~Lopes, A.: Optimizing the class
+  information divergence for transductive classification of texts using
+  propagation in bipartite graphs. Pattern Recognition Letters  \textbf{87},
+  127--138 (2017)
+
+\bibitem{netD}
+Pawson, T., Linding, R.: Network medicine. FEBS letters  \textbf{582}(8),
+  1266--1270 (2008)
+
+\bibitem{a6}
+Perrot, A., Auber, D.: Cornac: Tackling huge graph visualization with big data
+  infrastructure. IEEE Transactions on Big Data  (2018)
+
+\bibitem{Pope2017}
+Pope, A.S., Tauritz, D.R., Kent, A.D.: Evolving multi-level graph partitioning
+  algorithms. In: Proceedings of the IEEE Symposium Series on Computational
+  Intelligence (SSCI) (2017)
+
+\bibitem{shara}
+Sharan, R., Ulitsky, I., Shamir, R.: Network-based prediction of protein
+  function. Molecular systems biology  \textbf{3}(1), ~88 (2007)
+
+\bibitem{shneiderman1996eyes}
+Shneiderman, B.: The eyes have it: A task by data type taxonomy for information
+  visualizations. In: VL'96: Proceedings IEEE Symposium on Visual Languages.
+  pp. 336--343. IEEE CS Press (1996)
+
+\bibitem{staudt}
+Staudt, C.L., Sazonovs, A., Meyerhenke, H.: Networkit: A tool suite for
+  large-scale complex network analysis. Network Science  \textbf{4}(4),
+  508--530 (2016)
+
+\bibitem{tang}
+Tang, J., Qu, M., Wang, M., Zhang, M., Yan, J., Mei, Q.: Line: Large-scale
+  information network embedding. In: Proceedings $24^{th}$ International
+  Conference on World Wide Web. pp. 1067--1077. International World Wide Web
+  Conferences Steering Committee (2015)
+
+\bibitem{u7}
+Toosi, F.G., Nikolov, N.S.: Vertex-neighboring multilevel force-directed graph
+  drawing. In: IEEE International Conference on Systems, Man, and Cybernetics
+  (SMC). pp. 002996--003001. IEEE (2016)
+
+\bibitem{alan2}
+Valejo, A., Oliveira, M.C.F., Geraldo~Filho, P., Andrade~Lopes, A.: Multilevel
+  approach for combinatorial optimization in bipartite network. Knowledge-Based
+  Systems  \textbf{151},  45--61 (2018)
+
+\bibitem{co1}
+Valejo, A., Valverde-Rebaza, J., de~Andrade~Lopes, A.: A multilevel approach
+  for overlapping community detection. In: Brazilian Conference on Intelligent
+  Systems. pp. 390--395. IEEE (2014)
+
+\bibitem{u2}
+Walshaw, C.: A multilevel algorithm for force-directed graph drawing. In:
+  International Symposium on Graph Drawing. pp. 171--182. Springer (2000)
+
+\bibitem{a3}
+Wong, P.C., Mackey, P., Cook, K.A., Rohrer, R.M., Foote, H., Whiting, M.A.: A
+  multi-level middle-out cross-zooming approach for large graph analytics. In:
+  2009 IEEE Symposium on Visual Analytics Science and Technology. pp. 147--154.
+  IEEE (2009)
+
+\end{thebibliography}

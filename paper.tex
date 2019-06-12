@@ -78,7 +78,7 @@ network to yield a sequence of gradually simplified representations, i.e. with f
 They have been traditionally employed to enable executing expensive algorithms
 on large-scale networks\footnote{By large-scale we mean networks with up to a few hundreds of thousands vertices, in contrast to massive-scale networks with  millions to billions vertices.}: the rationale is to run the algorithm on a coarsened
 version that preserves the major properties of the input network to compute an initial solution, which is projected into the inverse hierarchy of coarsened networks  to yield a solution to the problem relative to the original network~\cite{alan2,ml2}. 
-The method has been mostly applied to identify community structures in large networks~\cite{Pope2017}, but also to other problems, including computing node-link layouts of simple (i.e. ``unipartite'') networks~\cite{u1,u2,u3,u4,u5,u6,u7,u8,u9,u10}. We are aware of a single (yet unpublished) contribution in the context of bipartite networks, in which a visual metaphor is used to assist users executing multilevel methods~\cite{cintra2019}. In general, solutions for node-link visualizations of large networks often rely on aggregation of nodes in clusters or communities to reduce visual clutter and create simpler representations amenable to user interaction~\cite{a1,a2,a3,a4,a5,a6}. 
+The method has been mostly applied to identify community structures in large networks~\cite{Pope2017}, but also to other problems, including computing node-link layouts of simple (i.e. ``unipartite'') networks~\cite{u1,u2,u3,u4,u5,u6,u7,u8,u9,u10}. We are aware of a single contribution (yet unpublished) in the context of bipartite networks, in which a visual metaphor is devised to assist users executing multilevel methods~\cite{cintra2019}. In general, solutions for node-link visualizations of large networks often rely on aggregation of nodes in clusters or communities to reduce visual clutter and create simpler representations amenable to user interaction~\cite{a1,a2,a3,a4,a5,a6}. 
 
 In this paper we present a system that employs the multilevel method to enable interactive visualization of large bipartite networks with node-link representations. Its underlying rationale is to present first a coarser instance of the network with which a user can interact to request for super-nodes (or groups of them) to be uncoarsened and visualized in more detail.
 The resulting interface enables interactive navigation on large networks, e.g. by gradual and on-demand uncoarsening of super-nodes, combined with functionalities for zooming and requesting complementary information on nodes and links. Besides assisting in the analysis of data represented as bipartite networks, the visualization may assist developers of multilevel algorithms, e.g., for inspecting and comparing results yielded by different algorithm and parameter choices. 
@@ -166,7 +166,7 @@ Valejo et al.~\cite{alan2} introduced a general framework applicable to bipartit
   }\label{mlf}
 \end{figure}
 
-The coarsening phase creates a hierarchy of coarsened networks $G_l$, $l$ integer $ \in [0,L]$ where $G_0$ is the original network and $|V_i| \geq |V_{i+1}|$, resulting in a hierarchical representation of $G_0$ at decreasing levels of detail.
+\noindent The coarsening phase creates a hierarchy of coarsened networks $G_l$, $l$ integer $ \in [0,L]$ where $G_0$ is the original network and $|V_i| \geq |V_{i+1}|$, resulting in a hierarchical representation of $G_0$ at decreasing levels of detail.
 The process is carried out by two algorithms: \emph{matching}, which decides which nodes to merge,
 and \emph{contracting}, which computes a reduced representation from the input network and the matching.
 In general, pairs of nodes are selected to be merged into super-nodes, and
@@ -183,7 +183,7 @@ For bipartite networks, we rely on the matching algorithms introduced by Valejo 
   \item A node may only match nodes that are reachable in two hops, i.e., via paths formed by two successive links    (i.e.  the closest possible nodes in the same layer).
 \end{itemize}
 
-The matching is followed by the contraction of the network into a coarser form.
+\noindent The matching is followed by the contraction of the network into a coarser form.
 Typically, the nodes matched are merged into a super-node weighted according to the number of of its composing nodes, and the links incident to such nodes are joined into super-links,
 weighted based on the accumulated weights of the links merged.
 The solution finding phase usually involves executing a computationally expensive algorithm, which becomes feasible in the coarsest network. In the uncoarsening phase the solution found in the coarsest network instance $G_L$ is projected back to the original, uncoarsened, network $G_0$. Uncoarsening is thus performed across the complete hierarchy, from $G_L$ to $G_0$ with successive refinement of the solutions to avoid local minima and improve solution quality.
@@ -207,8 +207,8 @@ Users can interact to specify the desired coarsening algorithm, select the node-
 \SetKwData{trans}{transform\_visual\_mapping}
 \SetKwInOut{Return}{Return}
 \begin{algorithm}
-  \qquad\qquad\qquad{\bf\emph{BiNetVis Algorithm}}\\
-  \vspace{0.3cm}
+  %\qquad\qquad\qquad{\bf\emph{BiNetVis Algorithm}}\\
+  %\vspace{0.3cm}
   \KwIn{\\
   \quad bipartite network: $G$\\
   \quad maximum number of levels: $L \in [0,n] \subset \mathbb{Z}$\\
@@ -235,7 +235,8 @@ Users can interact to specify the desired coarsening algorithm, select the node-
     $V\leftarrow$ \trans{$V$, $C$}\;
   }
   \caption{
-An algorithmic description of the multilevel method adapted for the visualization of bipartite networks, named the {\bf \emph{BiNetVis Algorithm}}.
+%An algorithmic description of the multilevel method adapted for the visualization of bipartite networks, named the {\bf \emph{BiNetVis Algorithm}}.
+{\bf \emph{BiNetVis}} algorithm for multilevel visualization of bipartite networks.
   The routines {\bf Matching$_b$} and {\bf Contracting$_b$} refer to any matching or contracting
   algorithms applicable to bipartite networks~\cite{alan2}.
   The routine {\bf map\_to\_screen} may refer to any node-link layout algorithm followed by a rendering of the network to the screen.
@@ -260,7 +261,7 @@ details using several operations, most importantly:
   \item Request the uncoarsening (i.e., expansion to the upper level) of a selected super-node or group of super-nodes.
 \end{itemize}
 
-Other operations are convenient to adequate the visual mapping to the current user needs, e.g., setting the network size, expanding super-nodes, exposing levels and highlighting topological features. These operations are further detailed in Section~\ref{sof}.
+\noindent Other operations are convenient to adequate the visual mapping to the current user needs, e.g., setting the network size, expanding super-nodes, exposing levels and highlighting topological features. These operations are further detailed in Section~\ref{sof}.
 
 
 \begin{figure}\centering
@@ -286,7 +287,7 @@ In the following we describe its functionalities and the underlying technologies
 \begin{figure}\centering
  \includegraphics[width=\textwidth]{overall2_}
   \caption{The BiNetVis interface: (1) drop-down menu for selecting or uploading a network for analysis;
-  (2) control widgets to select and parameterize the coarsening algorithm;  (3) the render button to display the network; (4) auxiliary widgets for selecting the network layout, show/hide links, and area to display user requested information on nodes or links; (5) interactive table holding information about the multilevel hierarchy levels and the bipartite network layers; can also be used to set the visualization on the canvas; (6) toolbar with controls for navigation of the network and fine-tuning the visualizationi, better inspected in Figure~\ref{toolbar} of Appendix C; (7) canvas with the node-link representation of the multilevel network. Notice that nodes shown belong to four distinct hierarchical levels: level 3 (dark red/green), level 2 (pink/cyan), level 3 (navy blue/yellow) and level 2 (red/bright green). The current interaction focus in on level 2, as indicated by the orange mark. 
+  (2) control widgets to select and parameterize the coarsening algorithm;  (3) the render button to display the network; (4) auxiliary widgets for selecting the network layout, show/hide links, and area to display user requested information on nodes or links; (5) interactive table holding information about the multilevel hierarchy levels and the bipartite network layers; can also be used to set the visualization on the canvas; (6) toolbar with controls for navigation of the network and fine-tuning the visualization (detailed in Figure~\ref{toolbar} of Appendix B); (7) canvas with the node-link representation of the multilevel network. Notice that nodes shown belong to four distinct hierarchical levels: level 3 (dark red/green), level 2 (pink/cyan), level 3 (navy blue/yellow) and level 2 (red/bright green). The current interaction focus in on level 2, as indicated by the orange mark. 
  %Elements are described in further detail in Section~\ref{use}.
   }\label{fpage0}
 \end{figure}
@@ -307,7 +308,7 @@ These steps are illustrated in Figure~\ref{fpage0}.
  \includegraphics[width=\textwidth]{initial_}
   \caption{The initial step of the BiNetVis usage is to apply the multilevel coarsening to an input network.
   The button at the top is for network uploading and selection.
-  In the gray box, the user chooses the coarsening algorithm and sets its parameters, as detailed in the Appendix A. % Appendix~\ref{ap}.
+  In the gray box, the user chooses the coarsening algorithm and sets its parameters (Appendix A details the parameters of coarsening algorithms). % Appendix~\ref{ap}.
   The blue button at the bottom is a drop-down menu where the user can select the node-link layout algorithm, where multiple alternatives are provided.
   The green button renders the network to the canvas and initializes further control widgets.
   By hitting the green button, except for the layout  button all the control elements above are disabled as the interface enters the visualization mode.
@@ -326,7 +327,7 @@ The user may also interact with the table to modify node color and shape or link
 
 \begin{figure}\centering
  \includegraphics[width=\textwidth]{secondPhase_}
-  \caption{Interface elements in BiNetVis in the visualization mode, where the user can navigate in the network and modify visualization settings.
+  \caption{Interface elements of BiNetVis in the visualization mode, where the user can navigate in the network and modify visualization settings.
   S/he may change the layout used when super-nodes are expanded and their predecessors rendered.  The checkbox to the left of each level may be used to show or hide the corresponding links at the level.
   The text area displays user-requested information or information useful for navigation.
   The canvas holds the node-link representation of the network, possibly depicting nodes at multiple levels of the multilevel hierarchy. The node-link representation may be modified using the toolbar controls and the controls the table on the right, which also shows key information on the status of the visualization. Here the current focus is on level 8 from a multilevel network with 12 hierarchical levels. 
@@ -357,12 +358,12 @@ changing the background color, zooming, left-right/up-down panning,
 rotating the entire network, and toggling between the current zoom and pan configuration and the initial settings.
 %The toolbar is contextualized in Figure~\ref{secondPhase}.
 
-There are many subtleties on the orchestrated use of these controls.
-As a facilitated means to convey the navigation possibilities, the user is invited to watch a demo video~\footnote{\url{http://rfabbri.vicg.icmc.usp.br:3000/multilevel2/about}} %in~\cite{yvideo}
-and use the BiNetVis interface~\footnote{\url{http://rfabbri.vicg.icmc.usp.br:3000/multilevel2/topdown}}.
-Furthermore, a simple case study is described in Appendix B.
+\noindent There are many subtleties on the orchestrated use of these controls.
+As a facilitated means to convey the navigation possibilities, the user is invited to watch a demo video\footnote{\url{http://rfabbri.vicg.icmc.usp.br:3000/multilevel2/about}} %in~\cite{yvideo}
+and use the BiNetVis interface\footnote{\url{http://rfabbri.vicg.icmc.usp.br:3000/multilevel2/topdown}}.
+Furthermore, a simple case study is described in Appendix A.
 %\cite{mbnvpage}.
-The more seasoned software developers may browse the code, upload a local instance of the software, and make changes to its source code~\footnote{ https://github.com/ttm/netText}.
+The more seasoned software developers may browse the code, upload a local instance of the software, and make changes to its source code\footnote{ https://github.com/ttm/netText}.
 %\cite{mbnvcode}.
 
 \subsection{Underlying software technologies}
@@ -370,7 +371,7 @@ The more seasoned software developers may browse the code, upload a local instan
 % flask for server, feather for auxiliary server
 % mongodb filesystem for data
 % Nuxt/Vue.js for the frontend with heavy use of PIXI.js
-Most important components of BiNetVis are written in a combination of JavaScript and Python: it uses Vue.js (set up by Nuxt.js) in the frontend client, the backend is a Flask Python server, used to perform specialized or heavy calculations.
+Components of BiNetVis are mostly written in a combination of JavaScript and Python: it uses Vue.js (set up by Nuxt.js) in the front-end client, the back-end is a Flask Python server, used to perform specialized or heavy calculations.
 A secondary server, a FeatherJS, is used to facilitate contact with the database and real-time multi-user interaction.
 The data is stored in a MongoDB database and ordinarily in the file system,
 while the multi-user interaction is deactivated for now to avoid unnecessary complexity.
@@ -380,7 +381,7 @@ The fast WebGL 2D rendering on the canvas is performed using Pixi.js.
 %Scene rasterization is usually performed though triangles.
 In order to comply with the goal of handling large bipartite networks, the network geometry on the canvas uses only triangles as primitives (for nodes) and straight lines (for links).
 The user may wish to further alleviate the computational burden by not rendering the links.
-To emphasize the bipartite nature of the network and render the visualization more aesthetically compelling the user may modify the node shapes in one (or both) layers to hexagons, instead of triangles.
+To emphasize the bipartite nature of the network and render the visualization more aesthetically compelling, the user may modify the node shapes in one (or both) layers to hexagons, instead of triangles.
 Using these features, and within the technologies described, we have visualized networks
 with tens of thousands of nodes without perceiving any lag in the interactive navigation and transformations,
 with links shown,
@@ -456,14 +457,84 @@ The authors acknowledge the financial support of the S\~ao Paulo State Research 
 \appendix
 
 \newpage
-\section*{Appendix A: Coarsening parameters}
+
+
+
+\section*{Appendix A: A case study}
+The interaction patterns between genes and proteins cast the basis of molecular biology and of disease pathogenesis~\cite{mlCa,netD}.
+Protein groups are defined by topological characteristics yield by the networks they entail,
+allowing for the isolation of functional and disease pathways~\cite{bara,shara}.
+Given these premises,
+a brief case study was performed considering the protein and
+n-reactome iterations network,
+which has 8,788 proteins, 15,433 iterations, and 41,087 links.
+Figure~\ref{aml0}(a) depicts the original network. One observes three more expressive communities and several smaller communities.
+Figure~\ref{aml0}(b) illustrates a coarsened representation with 100 nodes in each layer obtained after three contraction steps.
+The coarsened network emphasizes the larger communities,
+mirroring predominant characteristics of the input network.
+%As in this example, in general, the multilevel strategy provides good insight about the original topology.
+
+
+\begin{figure}[!h]\centering
+    \subfloat[original]{{\includegraphics[width=.46\textwidth, height=4.3cm]{aor} }}%
+    \qquad
+  \subfloat[coarsened]{{\includegraphics[width=.46\textwidth, height=4.3cm]{01} }}%
+    \caption{Graphical representations of a network with 24,211 nodes (8,788 proteins and 15,422 n-reactome iterations) and 41,087 links.
+    (a) shows the original network; (b) shows the coarsest network represented with 200 nodes only (100 nodes in each layer).
+    }%
+    \label{aml0}%
+\end{figure}
+
+\noindent For this case study, we focused on visualizing the smallest community in order to observe its connectivity and functional node patterns.
+Figures~\ref{aml1}(a), (b) and (c) depict the community observed in levels 2, 1 and 0 (original), respectively.
+The final result (Figure~\ref{aml1}(c)) is displayed in Figure~\ref{amlf},
+%were only the community is visualized, and only with uncoarsened nodes.
+where a group of densely connected nodes can be observed in the central area. An analyst may wish, e.g., to target the genes among such nodes
+in further steps of the investigation,
+due to their central role in interacting with numerous proteins.
+Another possibility is to examine the less connected nodes in an attempt
+to understand their specific roles. 
+%As exemplified, given the importance of the connectivity patterns, such as group structure, the method may assist research related to gene/protein networks.
+The example illustrates the potential usefulness of BiNetVis in studying pathogenic variants, groups of genes associated with metabolic deficiency,
+or groups of proteins that can be targeted for therapeutic or other purposes.
+
+\begin{figure}[!h]\centering
+    \subfloat[level 2]{{\includegraphics[width=.33\textwidth, height=3.5cm]{02} }}%
+  \subfloat[level 1]{{\includegraphics[width=.33\textwidth, height=3.5cm]{03} }}%
+  \subfloat[level 0]{{\includegraphics[width=.33\textwidth, height=3.5cm]{04} }}%
+    \caption{Progressive visualization of the smallest community in Figure~\ref{aml0}. In (a) the community is shown at the coarsest level; in (b) it has been been uncoarsened to the next level; and in (c) it has been uncoarsened to the final level, as in the original network.}%
+    \label{aml1}%
+\end{figure}
+
+\begin{figure}\centering
+ \includegraphics[width=0.9\textwidth]{05}
+  \caption{An isolated visualization of the community under analysis.
+  The researcher reached this visualization by on-demand transformations of the initial visualization of the original network (24,211 nodes) coarsened to a representation with only 200 nodes.}\label{amlf}
+\end{figure}
+
+
+
+\FloatBarrier
+\section*{Appendix B: The toolbar}
+The interface element that enables the interactive visualization in BiNetVis is the toolbar. It was contextualized in Figures~\ref{fpage0} and~\ref{secondPhase} and in Section~\ref{use},
+but in a scale which may not favor its inspection by the reader, specially in a printed version of this document.
+Figure~\ref{toolbar} details the toolbar.
+
+
+\begin{figure}\centering
+ \includegraphics[width=\textwidth]{toolbar}
+  \caption{The toolbar, contextualized in Figures~\ref{fpage0} and~\ref{secondPhase}, shown independently. The four groups of buttons are for specifying transformations applied to nodes, links, special/multilevel, and whole network. The usage has been described in Section~\ref{use}.}\label{toolbar}
+\end{figure}
+
+
+\section*{Appendix C: Coarsening parameters}
 
 Table \ref{tab:parameters} lists the input parameters of the coarsening algorithms, which can be applied independently to one or to both network layers. 
 %to fit their corresponding parameters. 
 Three parameters are common to all algorithms, namely the maximum number of coarsening levels~\textit{max-levels}, a reduction factor~\textit{reduction} and a similarity function~\textit{similarity}, which returns a similarity score between a pair of vertices. Parameter ~\textit{reduction} is multiplied by the number of vertices to determine the maximum number of nodes matched, e.g. if $reduction = 0.5$ each coarsening iteration will (potentially) reduce the number of nodes by a factor of two, yielding a logarithmic decrease in network size along the process. 
 %Similarity defines the distance between two vertices, in which a high similarity score represents a high degree of similarity. 
-A possible similarity function is the \emph{common neighbors} metric, which returns the number of common neighbors between the two nodes. The default coarsening algorithm in the system is $MLPb$, which requires four additional parameters: \textit{min-vertices}, which is the minimum number nodes expected in the coarsest network and two parameters that serve as stopping criteria, namely a \textit{maximum number of iterations} and a \textit{tolerance} threshold. The algorithm stops if either the maximum number of iterations has been reached or the number of label updates is bellow the defined tolerance. 
-A final parameter, namely \textit{upper bound}, defines an upper limit on the weights of super-nodes, which is useful to create super-nodes more faithful to the original structures and to avoid super-node weights that deviate significantly from the average values.
+A possible similarity function is the \emph{common neighbors} metric, which returns the number of common neighbors between the two nodes. The default coarsening algorithm in the system is $MLPb$, which requires four additional parameters. Parameter \textit{min-vertices} informs the minimum number nodes expected in the coarsest network. Parameters \textit{max-levels} and  \textit{tolerance} define stopping criteria: the algorithm stops if either the maximum number of iterations has been reached or the number of label updates is bellow the tolerance threshold. 
+A final parameter, namely \textit{upper bound}, defines an upper limit on the weights of super-nodes, which is useful to preserve the original structures when creating super-nodes and to avoid super-nodes with weights that deviate significantly from the average.
 %that can be manipulated to create the coarsening networks.
 
 \begin{table}[!ht]
@@ -490,86 +561,6 @@ A final parameter, namely \textit{upper bound}, defines an upper limit on the we
 \null
 \vfill
 
-\section*{Appendix B: Case study}
-The interaction patterns between genes and proteins cast the basis of molecular biology and of disease pathogenesis~\cite{netD,mlCa}.
-Protein groups are defined by topological characteristics yield by the networks they entail,
-allowing for the isolation of functional and disease pathways~\cite{bara,shara}.
-Given these premises,
-a brief case study was performed considering the protein and
-n-reactome iterations network,
-which has 8788 proteins, 15433 iterations, and 41087 links.
-Figure~\ref{aml0} (a) depicts the original network.
-There are three communities that are more expressive and smaller communities.
-Figure~\ref{aml0} (b) illustrates a reduced representation of the network,
-with 200 nodes in each layer,
-which resulted from 3 contraction steps.
-The reduced network highlights the larger communities,
-mirroring predominant characteristics of the starting network.
-As in this example, in general,
-the multilevel strategy provides good insight about the original topology.
-
-
-\begin{figure}[!h]\centering
-    \subfloat[original]{{\includegraphics[width=.46\textwidth, height=4.3cm]{aor} }}%
-    \qquad
-  \subfloat[coarsened]{{\includegraphics[width=.46\textwidth, height=4.3cm]{aml} }}%
-    \caption{Graphical representations of a network with 24,211 nodes (8,788 proteins and 15,422 n-reactome iterations), and 41,087 links.
-    In (a) the original network is mapped visually, and in (b) the network is represented using only 200 nodes (100 nodes in each layer).
-    }%
-    \label{aml0}%
-\end{figure}
-
-For this case study, we focused in the smallest of the three communities,
-in order to visualize it separately,
-observe its connectivity patterns,
-and consequently the functional patterns
-of the nodes that belong to this community.
-Figures~\ref{aml1} (a), (b) and (c) depict the community in levels 2, 1 and 0 (original), respectively.
-The final result is isolated in Figure~\ref{amlf},
-were only the community is visualized, and only with uncoarsened nodes.
-Therein, it is evident that a group of more connected nodes exists, they are in the center of the image.
-The analist may wish, e.g., to target the genes among such nodes
-in further steps of the investigation,
-due to their central role in interacting with numerous proteins.
-Another possibility is to examine the less connected nodes in an attempt
-to understand their specific roles.
-
-\begin{figure}[!h]\centering
-    \subfloat[original]{{\includegraphics[width=.3\textwidth, height=3.3cm]{aml2} }}%
-  \subfloat[coarsened]{{\includegraphics[width=.3\textwidth, height=3.3cm]{aml3} }}%
-  \subfloat[coarsened]{{\includegraphics[width=.3\textwidth, height=3.3cm]{aml4_} }}%
-    \caption{Progressive visualization of the smallest community if Figure~\ref{aml0}. In (a), the nodes are uncoarsened to level 2.
-    In (b), the nodes are uncorsened to level 1.
-    In (c), the noeds are uncoarsened to level 0, i.e. to the level of the original, uncoarsened, network.}%
-    \label{aml1}%
-\end{figure}
-
-\begin{figure}\centering
- \includegraphics[width=0.7\textwidth,height=7cm]{aml5_}
-  \caption{An isolated visualization of the community being analysed.
-  The researcher reached this visualization by on-demand transformations of the initial visualization, i.e. from a respresentation with only 200 nodes of a network with 24,211 nodes.}\label{amlf}
-\end{figure}
-
-As exempified,
-given the importance of the connectivity patterns,
-such as group structure,
-and given the effectiveness of the visualization assisted by multilevel strategies in bipartite networks,
-the method may assist research related to gene/protein networks.
-Thus, BiNetVis is potentially helpful in studying pathogenic variants,
-groups of genes associated with metabolic deficiency,
-or groups of proteins that can be targeted for therapeutic goals.
-
-\FloatBarrier
-\section*{Appendix C: The toolbar}
-One special element that enables the interactive visualization of BiNetVis is the toolbar. It is contextualized in Figures~\ref{fpage0} and~\ref{secondPhase},
-but in a scale which may not favor its inspection by the reader, specially in a printed version of this document.
-Figure~\ref{toolbar} is dedicated to the toolbar and its usage is described in Section~\ref{use}.
-
-
-\begin{figure}\centering
- \includegraphics[width=\textwidth]{toolbar}
-  \caption{The toolbar, contextualized in Figures~\ref{fpage0} and~\ref{secondPhase}, shown independently. The four groups of buttons are for transformations of: nodes, links, special/multilevel, and whole network. The usage is described in Section~\ref{use}.}\label{toolbar}
-\end{figure}
-
 \end{document}
+
 
